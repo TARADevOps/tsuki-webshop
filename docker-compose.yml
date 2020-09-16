@@ -25,7 +25,6 @@ services:
   wordpress:
     container_name: app
     image: wordpress:${WP_VERSION}
-    build: ./redis
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wordpress:/var/www/html
