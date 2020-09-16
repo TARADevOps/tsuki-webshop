@@ -1,4 +1,4 @@
-Dockerised WordPress 5 with Nginx and PHP-FPM on Debian 10
+Dockerized WordPress 5 with Nginx and PHP-FPM on Debian 10
 
 This project is a docker compose installation of a single site WordPress instance using Nginx as the web server and MariaDB as the database.
 
