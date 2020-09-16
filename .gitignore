@@ -1,0 +1,7 @@
+.env*
+logs/
+nginx/
+mariadb/
+wordpress/
+!.env_example
+!nginx/default.conf
