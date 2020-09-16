@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+
+  db:
+    container_name: db
+    image: mariadb:${MARIADB_VERSION}
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    restart: unless-stopped
+
+  redis:
+    container_name: redis
+    image: redis:${REDIS_VERSION}
+    volumes:
+      - ./redis:/data
+    restart: unless-stopped
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress:${WP_VERSION}
+    build: ./redis
+    volumes:
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      - WORDPRESS_DB_HOST:db
+      - WORDPRESS_DB_USER:${MDB_USER}
+      - WORDPRESS_DB_PASSWORD:${MDB_PASSWORD}
+      - WORDPRESS_DB_NAME:${MDB_NAME}
+      - WORDPRESS_TABLE_PREFIX:${MDB_TABLE_PREFIX}
+    depends_on:
+      - db
+    restart: unless-stopped
+    links:
+      - redis
+
+  nginx:
+    container_name: nginx
+    image: nginx:${NGINX_VERSION}
+    volumes:
+      - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
+      - ${NGINX_LOG_DIR}:/var/log/nginx
+      - ${WP_DATA_DIR}:/var/www/html
+    ports:
+      - '8080:80'
+    depends_on:
+      - wordpress
+    restart: unless-stopped
