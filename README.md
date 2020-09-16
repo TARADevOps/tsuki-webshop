@@ -1,8 +1,31 @@
-Dockerized WordPress 5 with Nginx and PHP-FPM on Debian 10
+﻿Dockerized WordPress 5 with Nginx and PHP-FPM 7.4
 
-This project is a docker compose installation of a single site WordPress instance using Nginx as the web server and MariaDB as the database.
+Docker-compose deployment of a single site WordPress instance using MariaDB as the database with REDIS for object cache & NGINX as the application server.
 
 What is WordPress?
 
-WordPress is open source software you can use to create a beautiful website, blog, or app.
+WordPress is an open source CMS used to create beautiful websites & webapps.
 More information at https://wordpress.org
+
+
+
+Tsuki-Stak is a set of Docker containers providing a full backend composed of:, 
+    • a backend database, 
+    • backend database object cache, 
+    • PHP-FPM 7.4,  
+    • Application Server
+
+  $ git clone https://github.com/tsukidyomi/tsuki-stak.git
+  $ cd tsuki-stak
+  $ cp .env_example .env
+	# Edit .env as required
+  $ docker-compose up -d 
+
+
+
+After a few moments you should see your site running at http://127.0.0.1:8080 ready to be configured.
+
+
+
+Live deployment @ https://www.tsuki.digital
+
