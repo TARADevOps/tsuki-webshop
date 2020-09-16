@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   rdbms:
-    container_name: db
+    container_name: rdbms
     image: mariadb:${MARIADB_VERSION}
     volumes:
       - ./mariadb:/var/lib/mysql
