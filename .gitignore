@@ -1,9 +1,17 @@
+#This file EXCLUDES the following from being pushed to Github Repo!
+
+# Secret variables (passwords etc):
 .env*
-uploads.ini
+!.env_example # exception
+# Application configs & logs:
 config/
 logs/
+# Application Server:
 nginx/
-mariadb/
+!nginx/default.conf # exception
+# PHP-FPM Application:
 wordpress/
-!.env_example
-!nginx/default.conf
+# Application RDBMS:
+mariadb/
+# TSUKI.DIGITAL PHP settings:
+uploads.ini
