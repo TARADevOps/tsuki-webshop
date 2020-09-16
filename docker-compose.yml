@@ -1,7 +1,7 @@
 version: '3.7'
 services:
 
-  db:
+  rdbms:
     container_name: db
     image: mariadb:${MARIADB_VERSION}
     volumes:
@@ -14,14 +14,16 @@ services:
     restart: unless-stopped
 
   redis:
-    container_name: redis
+    container_name: dbCache
     image: redis:${REDIS_VERSION}
     volumes:
       - ./redis:/data
     restart: unless-stopped
+    links:
+      - wordpress
 
   wordpress:
-    container_name: wordpress
+    container_name: app
     image: wordpress:${WP_VERSION}
     build: ./redis
     volumes:
@@ -29,19 +31,17 @@ services:
       - ./wordpress:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
-      - WORDPRESS_DB_HOST:db
+      - WORDPRESS_DB_HOST:rdbms
       - WORDPRESS_DB_USER:${MDB_USER}
       - WORDPRESS_DB_PASSWORD:${MDB_PASSWORD}
       - WORDPRESS_DB_NAME:${MDB_NAME}
       - WORDPRESS_TABLE_PREFIX:${MDB_TABLE_PREFIX}
     depends_on:
-      - db
+      - rdbms
     restart: unless-stopped
-    links:
-      - redis
 
   nginx:
-    container_name: nginx
+    container_name: appServer
     image: nginx:${NGINX_VERSION}
     volumes:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
@@ -49,6 +49,6 @@ services:
       - ${WP_DATA_DIR}:/var/www/html
     ports:
       - '8080:80'
-    depends_on:
+    links:
       - wordpress
     restart: unless-stopped
