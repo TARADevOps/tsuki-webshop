@@ -1,8 +1,7 @@
 # Tsuki Stak
+    NOTE: View DOCKER_setup.md for instructions on how to deploy.
 
 Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
-
-NOTE: View DOCKER_setup.md for instructions on how to deploy.
  
 ### What is this ?
 
