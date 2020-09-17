@@ -1,4 +1,5 @@
-    NOTE: View DOCKER_setup.md for instructions on how to deploy.
+    NOTE: View [DOCKER_setup.md](https://github.com/tsukidyomi/tsuki-stak/blob/master/DOCKER_setup.md) for instructions on how to deploy.
+    
 # Tsuki Stak
 
 Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
