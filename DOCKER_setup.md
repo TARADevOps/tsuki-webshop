@@ -12,7 +12,7 @@ Tsuki Stak is a set of Docker containers providing a full backend composed of:
 ### Table of Content
 
 ```env
-i)  Architecture
+i)   Architecture
 ii)  Requirements
 iii) Clone the repo
 iv)  Copy & edit .env file
