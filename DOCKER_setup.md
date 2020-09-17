@@ -50,16 +50,31 @@ You now have a .env file. This file contains insecure default values for configu
 
 This opens the .env file with the nano editor and you are now required to define certain values.
 
-* Edit the following Mariadb variables:
+Example `.env` file (default values):
 
-    MYSQL_ROOT_PASSWORD=rootpasswd
-    MYSQL_USER=user
-    MYSQL_PASSWORD=changeme
+```env
+# Mariadb variables:
+MARIADB_VERSION=10.5
+MYSQL_ROOT_PASSWORD=rootpasswd
+MYSQL_USER=user
+MYSQL_PASSWORD=changeme
+MYSQL_DATABASE=rdbms
+# Redis variables:
+REDIS_VERSION=6
+# Wordpress variables:
+WP_VERSION=5-php7.4-fpm-alpine
+MDB_USER=user
+MDB_PASSWORD=changeme
+MDB_NAME=rdbms
+MDB_TABLE_PREFIX=wp_
+# Nginx variables:
+NGINX_VERSION=stable-alpine
+# Binded Volumes:
+NGINX_CONF_DIR=./nginx
+NGINX_LOG_DIR=./logs/nginx
+WP_DATA_DIR=./wordpress
 
-* Edit the following Wordpress variables:
-
-    MDB_USER=user
-    MDB_PASSWORD=changeme
+```
 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. You now have a .env file ready to use for deployment.
 
