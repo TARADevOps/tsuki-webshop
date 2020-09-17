@@ -1,6 +1,6 @@
 # Tsuki Stak
 
-** Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
+* Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
  
 ### What is this ?
 
