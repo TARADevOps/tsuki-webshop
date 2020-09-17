@@ -79,6 +79,19 @@ WP_DATA_DIR=./wordpress
 
 ```
 
+Edit the following:
+
+```env
+# Mariadb variables:
+MYSQL_ROOT_PASSWORD=rootpasswd
+MYSQL_USER=user
+MYSQL_PASSWORD=changeme
+
+# Wordpress variables:
+MDB_USER=user
+MDB_PASSWORD=changeme
+
+```
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. You now have a .env file ready to use for deployment.
 
 ### STEP 3: Deployment with docker-compose
