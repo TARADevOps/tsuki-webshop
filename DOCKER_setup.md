@@ -41,7 +41,7 @@ i.e. Docker Engine v17.04.0+
 
     git clone https://github.com/tsukidyomi/tsuki-stak.git
 
-### STEP 2: Clone & edit .env file
+### STEP 2: Copy & edit .env file
 
 The .env file, stored as a hidden file in the main directory needs your input. There is a .env_example that you can clone to start.
 
