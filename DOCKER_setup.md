@@ -1,13 +1,15 @@
 
 ## Installation with Docker and Docker-Compose ##
 
-Tsuki Stak is a set of Docker containers providing a full backend composed of: 
+Tsuki Stak is a set of Docker containers providing a full backend that serves php code to the application server utilizing PHP-FPM. 
 
-* backend database, 
-* backend database object cache,
-* PHP-FPM 7.4,
-* WordPress 5.5.1
-* Application Server
+It is composed of the following components: 
+
+* Relational Database Management System (RDBMS)
+* In-memory, schema-less database object caching
+* WordPress 5.5.1 (PHP 7.4)
+* PHP-FPM
+* Backend Application Server (http://)
 
 ### Table of Content
 

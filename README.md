@@ -2,17 +2,15 @@
     
 # Tsuki Stak
 
-Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
- 
-### What is this ?
+## Dockerized WordPress 5 (PHP 7.4), with Nginx (PHP-FPM) on Alpine Linux
 
-A docker-compose deployment of a single site WordPress instance using MariaDB as backing database with Redis for object caching & Nginx as the application server; based on Alpine Linux.
+A docker-compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for object caching; built on Alpine Linux.
 
 ### Why Alpine Linux ?
 
 Small. Simple. Secure.
 
-Alpine Linux is a security-oriented, lightweight Linux distribution based on musl libc and busybox. It compiles all user-space binaries as position-independent executables with stack-smashing protection.
+Alpine Linux is a security-oriented, lightweight Linux distribution based on musl, libc and busybox. It compiles all user-space binaries as position-independent executables with stack-smashing protection.
 
 Because of its small size, it is commonly used in containers providing quick boot-up times.
 
@@ -34,11 +32,24 @@ More information at: https://github.com/docker/compose
 
 ### Why Nginx ?
 
-The goal behind NGINX was to create the fastest web server around, and maintaining that excellence is still a central goal of the project. NGINX consistently beats Apache and other servers in benchmarks measuring web server performance. 
-
-Since the original release of NGINX however, websites have expanded from simple HTML pages to dynamic, multifaceted content. NGINX has grown along with it and now supports all the components of the modern Web, including WebSocket, HTTP/2, and streaming of multiple video formats (HDS, HLS, RTMP, and others).
+The goal behind NGINX was to create the fastest web server around, and maintaining that excellence is still a central goal of the project. NGINX consistently beats Apache and other servers in benchmarks measuring web server performance. Nginx also plays well with PHP-FPM.
 
 More information at: https://www.nginx.com
+
+### Why PHP-FPM ?
+
+PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites. 
+
+These features include:
+
+* Adaptive process spawning
+* Basic statistics (ala Apache's mod_status)
+* Advanced process management with graceful stop/start
+* Stdout & stderr logging
+* Emergency restart in case of accidental opcode cache destruction
+* Accelerated upload support
+* Support for a "slowlog"
+* Enhancements to FastCGI, such as fastcgi_finish_request()
 
 ### Why WordPress ? 
 

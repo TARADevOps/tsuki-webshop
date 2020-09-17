@@ -23,7 +23,7 @@ services:
       - wordpress
 
   wordpress:
-    container_name: app
+    container_name: wp_php_fpm
     image: wordpress:${WP_VERSION}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
