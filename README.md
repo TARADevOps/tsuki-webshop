@@ -89,3 +89,31 @@ After a few moments you should see your site running at http://127.0.0.1:8080 re
 ** Live deployment @ https://www.tsuki.digital **
 
 
+<<<<<<< HEAD
+=======
+WordPress is an open source CMS used to create beautiful websites & webapps.
+More information at https://wordpress.org
+
+
+
+Tsuki-Stak is a set of Docker containers providing a full backend composed of: 
+    • a backend database, 
+    • backend database object cache, 
+    • PHP-FPM 7.4,  
+    • Application Server
+
+  $ git clone https://github.com/tsukidyomi/tsuki-stak.git
+  $ cd tsuki-stak
+  $ cp .env_example .env
+	# Edit .env as required
+  $ docker-compose up -d 
+
+
+
+After a few moments you should see your site running at http://127.0.0.1:8080 ready to be configured.
+
+
+
+Live deployment @ https://www.tsuki.digital
+
+>>>>>>> c2f6c7447ecf13edeb02c0106807efd11618bf29

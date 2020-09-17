@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   rdbms:
-    container_name: db
+    container_name: rdbms
     image: mariadb:${MARIADB_VERSION}
     volumes:
       - ./mariadb:/var/lib/mysql
@@ -25,7 +25,6 @@ services:
   wordpress:
     container_name: app
     image: wordpress:${WP_VERSION}
-    build: ./redis
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wordpress:/var/www/html
