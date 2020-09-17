@@ -1,6 +1,8 @@
 # Tsuki Stak
 
-* Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
+Dockerized WordPress 5 (PHP-FPM 7.4), with Nginx on Alpine Linux
+
+NOTE: View DOCKER_setup.md for instructions on how to deploy.
  
 ### What is this ?
 
@@ -63,4 +65,6 @@ Experience the same benefits as customers like Deutsche Bank, DBS Bank, Nasdaq, 
 
 More information at: https://mariadb.com/
 
+### Who are we ?
 
+We are Tsuki (https://www.tsuki.digital) and this is our open source backend :)
