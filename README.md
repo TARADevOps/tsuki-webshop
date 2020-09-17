@@ -9,7 +9,7 @@ More information at https://wordpress.org
 
 
 
-Tsuki-Stak is a set of Docker containers providing a full backend composed of:, 
+Tsuki-Stak is a set of Docker containers providing a full backend composed of: 
     • a backend database, 
     • backend database object cache, 
     • PHP-FPM 7.4,  
