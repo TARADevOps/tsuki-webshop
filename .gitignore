@@ -2,16 +2,22 @@
 
 # Secret variables (passwords etc):
 .env*
-!.env_example # exception
+!.env_example # Exception
 # Application configs & logs:
 config/
 logs/
+data/
+# Web Server
+caddy/
+!caddy/Dockerfile # Exception
 # Application Server:
 nginx/
-!nginx/default.conf # exception
+!nginx/default.conf # Exception
 # PHP-FPM Application:
 wordpress/
 # Application RDBMS:
 mariadb/
+# Redis
+redis/
 # TSUKI.DIGITAL PHP settings:
 uploads.ini

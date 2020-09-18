@@ -2,17 +2,19 @@ version: '3.7'
 services:
 
   caddy:
-    container_name: webServer
-    image: zzrot/alpine-caddy
+    container_name: WebServer
+    image: alpine:3.12
     volumes:
       - ${CADDY_DATA_DIR}:/etc/Caddyfile
       - ${WP_DATA_DIR}:/var/www/html
       - ./caddy/.caddy:/root/.caddy
     ports:
       -   80:80
+      -   443:443
+      -   2019:2019
   
   nginx:
-    container_name: appServer
+    container_name: AppServer
     image: nginx:${NGINX_VERSION}
     volumes:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
@@ -25,10 +27,10 @@ services:
     restart: unless-stopped
 
   mariadb:
-    container_name: database
+    container_name: Database
     image: mariadb:${MARIADB_VERSION}
     volumes:
-      - ./mariadb:/var/lib/mysql
+      - ${MDB_DATA_DIR}:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
@@ -40,26 +42,26 @@ services:
     container_name: dbCache
     image: redis:${REDIS_VERSION}
     volumes:
-      - ./redis:/data
+      - ${DB_CACHE_DATA_DIR}:/data
     restart: unless-stopped
     links:
       - wordpress
 
   wordpress:
-    container_name: wp_php_fpm
+    container_name: WP_PHP_FPM_7.4
     image: wordpress:${WP_VERSION}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ${WP_DATA_DIR}:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
-      - WORDPRESS_DB_HOST:rdbms
+      - WORDPRESS_DB_HOST:mariadb
       - WORDPRESS_DB_USER:${MDB_USER}
       - WORDPRESS_DB_PASSWORD:${MDB_PASSWORD}
       - WORDPRESS_DB_NAME:${MDB_NAME}
       - WORDPRESS_TABLE_PREFIX:${MDB_TABLE_PREFIX}
     depends_on:
-      - rdbms
+      - mariadb
     restart: unless-stopped
 
  
