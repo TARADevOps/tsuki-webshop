@@ -1,8 +1,31 @@
 version: '3.7'
 services:
 
-  rdbms:
-    container_name: rdbms
+  caddy:
+    container_name: webServer
+    image: zzrot/alpine-caddy
+    volumes:
+      - ${CADDY_DATA_DIR}:/etc/Caddyfile
+      - ${WP_DATA_DIR}:/var/www/html
+      - ./caddy/.caddy:/root/.caddy
+    ports:
+      -   80:80
+  
+  nginx:
+    container_name: appServer
+    image: nginx:${NGINX_VERSION}
+    volumes:
+      - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
+      - ${NGINX_LOG_DIR}:/var/log/nginx
+      - ${WP_DATA_DIR}:/var/www/html
+    ports:
+      - '8080:80'
+    links:
+      - wordpress
+    restart: unless-stopped
+
+  mariadb:
+    container_name: database
     image: mariadb:${MARIADB_VERSION}
     volumes:
       - ./mariadb:/var/lib/mysql
@@ -27,7 +50,7 @@ services:
     image: wordpress:${WP_VERSION}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wordpress:/var/www/html
+      - ${WP_DATA_DIR}:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
       - WORDPRESS_DB_HOST:rdbms
@@ -39,15 +62,4 @@ services:
       - rdbms
     restart: unless-stopped
 
-  nginx:
-    container_name: appServer
-    image: nginx:${NGINX_VERSION}
-    volumes:
-      - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
-      - ${NGINX_LOG_DIR}:/var/log/nginx
-      - ${WP_DATA_DIR}:/var/www/html
-    ports:
-      - '8080:80'
-    links:
-      - wordpress
-    restart: unless-stopped
+ 

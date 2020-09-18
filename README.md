@@ -1,16 +1,16 @@
     NOTE: View DOCKER_setup.md for instructions on how to deploy.
     
-# Tsuki Stak
+# Tsuki Webshop Deployment
 
-## Dockerized WordPress 5 (PHP 7.4), with Nginx (PHP-FPM) on Alpine Linux
+## Dockerized WordPress 5 (PHP 7.4), with Nginx (PHP-FPM) & Caddy Server on Alpine Linux
 
-A docker-compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for object caching; built on Alpine Linux.
+A docker-compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for in-memory object caching; built on Alpine Linux.
 
 ### Why Alpine Linux ?
 
 Small. Simple. Secure.
 
-Alpine Linux is a security-oriented, lightweight Linux distribution based on musl, libc and busybox. It compiles all user-space binaries as position-independent executables with stack-smashing protection.
+Alpine Linux is a security-oriented, lightweight Linux distribution based on musl libc and busybox. It compiles all user-space binaries as position-independent executables with stack-smashing protection.
 
 Because of its small size, it is commonly used in containers providing quick boot-up times.
 
@@ -30,9 +30,17 @@ Compose is a tool for defining and running multi-container Docker applications. 
 
 More information at: https://github.com/docker/compose
 
+### Why Caddy ?
+
+Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
+
+Caddy simplifies your infrastructure. It takes care of TLS certificate renewals, OCSP stapling, static file serving, reverse proxying, Kubernetes ingress, and more.
+
+More information at: https://caddyserver.com/
+
 ### Why Nginx ?
 
-The goal behind NGINX was to create the fastest web server around, and maintaining that excellence is still a central goal of the project. NGINX consistently beats Apache and other servers in benchmarks measuring web server performance. Nginx also plays well with PHP-FPM.
+The goal behind NGINX was to create the fastest web server around, and maintaining that excellence is still a central goal of the project. NGINX consistently beats Apache and other servers in benchmarks measuring web server performance. Nginx also pairs well with PHP-FPM.
 
 More information at: https://www.nginx.com
 
@@ -50,6 +58,8 @@ These features include:
 * Accelerated upload support
 * Support for a "slowlog"
 * Enhancements to FastCGI, such as fastcgi_finish_request()
+
+More information at: https://php-fpm.org/about/
 
 ### Why WordPress ? 
 
@@ -78,4 +88,4 @@ More information at: https://mariadb.com/
 
 ### Who are we ?
 
-We are Tsuki (https://www.tsuki.digital) and this is our open source backend :)
+We are Tsuki (https://www.tsuki.digital) and we are proudly open sourced.
