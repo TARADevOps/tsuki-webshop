@@ -1,15 +1,16 @@
 
 ## Installation with Docker and Docker-Compose ##
 
-Tsuki Stak is a set of Docker containers providing a full backend that serves php code to the application server utilizing PHP-FPM. 
+Tsuki Stak is a set of Docker containers providing a full backend that serves PHP code to the application server utilizing PHP-FPM. 
 
-It is composed of the following components: 
+It is composed of the following technologies: 
 
-* Relational Database Management System (RDBMS)
-* In-memory, schema-less database object caching
-* WordPress 5.5.1 (PHP 7.4)
+* Relational Database Management System (RDBMS) : MariaDB
+* In-memory, schema-less Database Object Caching : Redis Cache
+* PHP 7.4
+* WordPress 5
 * PHP-FPM
-* Backend Application Server (http://)
+* Application Server
 
 ### Table of Content
 
@@ -17,7 +18,7 @@ It is composed of the following components:
 i)   Architecture
 ii)  Requirements
 iii) Clone the repo
-iv)  Copy & edit .env file
+iv)  Copy and edit .env file
 v)   Deployment with docker-compose
 vi)  Stop Containers
 vii) Remove Containers
@@ -34,7 +35,7 @@ vii) Remove Containers
 * OS: Linux
 * Disk: 64GB - NVMe SSD is recommended
 * RAM: 4GB
-* Docker and Docker Compose installed on the host machine 
+* Docker and Docker-Compose installed on the host machine 
 
 A recent version supporting v3 of docker-compose files is recommended
 i.e. Docker Engine v17.04.0+ 
@@ -43,13 +44,13 @@ i.e. Docker Engine v17.04.0+
 
     git clone https://github.com/tsukidyomi/tsuki-stak.git
 
-### STEP 2: Copy & edit .env file
+### STEP 2: Copy and edit .env file
 
-The .env file, stored as a hidden file in the main directory needs your input. There is a .env_example that you can clone to start.
+The .env file, stored as a hidden file in the main directory, requires your input. There is a .env_example that you can clone to start.
 
     cp .env_example .env
 
-You now have a .env file. This file contains insecure default values for configuration options. During deployment this .env file is used to initialize the configuration files that will be used by your app. The values you input are used by your app to securely authenticate themselves.
+You now have a .env file. This file contains insecure default values for configuration options. During deployment this .env file is used to initialize the configuration files that will be used by your app. The values you input are used for secure authentication.
 
     nano .env
 
