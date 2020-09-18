@@ -8,7 +8,7 @@
 
 A docker-compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for in-memory object caching; built on Alpine Linux.
 
-### Why Alpine Linux ?
+### Alpine Linux ?
 
 Small. Simple. Secure.
 
@@ -18,7 +18,7 @@ Because of its small size, it is commonly used in containers providing quick boo
 
 More information at: https://www.alpinelinux.org/
 
-### Why Docker ? 
+### Docker ? 
 
 Developing apps today requires so much more than writing code. Multiple languages, frameworks, architectures, and discontinuous interfaces between tools for each lifecycle stage creates enormous complexity. 
 
@@ -26,13 +26,13 @@ Docker simplifies and accelerates workflow, while giving developers the freedom 
 
 More information at: https://docker.com/why-docker
 
-### Why Docker-Compose ?
+### Docker-Compose ?
 
 Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application's services. Then, using a single command, you create and start all the services from your configuration.
 
 More information at: https://github.com/docker/compose
 
-### Why Caddy ?
+### Caddy ?
 
 Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
 
@@ -40,13 +40,13 @@ Caddy simplifies your infrastructure. It takes care of TLS certificate renewals,
 
 More information at: https://caddyserver.com/
 
-### Why Nginx ?
+### Nginx ?
 
 The goal behind NGINX was to create the fastest web server around, and maintaining that excellence is still a central goal of the project. NGINX consistently beats Apache and other servers in benchmarks measuring web server performance. Nginx also pairs well with PHP-FPM.
 
 More information at: https://www.nginx.com
 
-### Why PHP-FPM ?
+### PHP-FPM ?
 
 PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites. 
 
@@ -63,7 +63,7 @@ These features include:
 
 More information at: https://php-fpm.org/about/
 
-### Why WordPress ? 
+### WordPress ? 
 
 WordPress is open source software used to create a beautiful websites & webapps.
 Beautiful designs, powerful features, and the freedom to build anything you want. 
@@ -72,7 +72,7 @@ WordPress is both free and priceless at the same time.
 
 More information at: https://wordpress.org
 
-### Why Redis ?
+### Redis ?
 
 Redis creates a new category in the database world. It combines the best of in-memory, schema-less design with optimized data structures and versatile modules that adapt to your data needs. 
 
@@ -80,7 +80,7 @@ The result is the most adept, high performance, multi-purpose database, that sca
 
 More information at: https://redislabs.com/why-redis/
 
-### Why MariaDB ?
+### MariaDB ?
 
 Break free from the costs, constraints and complexity of proprietary databases and reinvest in what matters most, developing innovative applications and services as fast as possible. 
 
