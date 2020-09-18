@@ -3,7 +3,7 @@
 
 ## Overview:
 
-The desired result of following this document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server utilizing PHP-FPM with built in SSL termination & WAF - all ochestrated and managed by Docker-Compose. 
+The desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server utilizing PHP-FPM with built in SSL termination & WAF - all ochestrated and managed by Docker-Compose. 
 
 The deployment is comprised of the following technologies: 
 
