@@ -1,6 +1,6 @@
 ### !!! Work In Progress !!!
 
-DEPLOYMENT MANUAL : https://github.com/tsukidyomi/tsuki-stak/blob/master/DOCKER_setup.md
+Deployment Manual : https://github.com/tsukidyomi/tsuki-stak/blob/master/DOCKER_setup.md
     
 # Tsuki Webshop Deployment
 
