@@ -9,7 +9,7 @@ This deployment is comprised of the following technologies:
 ```env
 i)    Alpine Linux : Container Operating System
 ii)   MariaDB      : Relational Database Management System (RDBMS)
-iii)  Redis    : In-Memory, Schema-Less Database Object Caching
+iii)  Redis        : In-Memory, Schema-Less Database Object Caching
 iv)   PHP 7.4      : General-Purpose Scripting Language
 v)    WordPress 5  : Content Management System written in PHP
 vi)   PHP-FPM      : PHP FastCGI Process Manager
