@@ -96,7 +96,7 @@ Install git :
 
 ### STEP 1: Clone the repository
 
-    git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
+    git clone https://github.com/tsukidyomi/tsuki-stak.git my-webshop
 
 ### STEP 2: Create & define .env
 
