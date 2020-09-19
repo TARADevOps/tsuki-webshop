@@ -52,7 +52,7 @@ i.e. Docker Engine v18.06.0+
 
 SSH into the host machine : 
 
-    $ ssh root@PUBLIC_IP_ADDRESS
+$   ssh root@PUBLIC_IP_ADDRESS
 
 Create a secondary SUDO USER
 
@@ -66,7 +66,7 @@ Disable root SSH access & enable NEW_USER public-key only access :
     
 Confirm Seconday User has SSH access from a new shell : 
 
-    $ ssh NEW_USER@PUBLIC_IP_ADDRESS
+$   ssh NEW_USER@PUBLIC_IP_ADDRESS
 
 Ensure Docker & Docker-compose is installed : 
 
@@ -82,33 +82,33 @@ Register a Domain Name and point it to your server :
 
 Enable Uncomplicated Firewall (UFW) :
     
-    $ sudo ufw allow ssh 
-    $ sudo ufw default deny incoming
-    $ sudo ufw default allow outgoing
-    $ sudo ufw alow http
-    $ sudo ufw allow https
-    $ sudo systemctl enable ufw
-    $ sudo ufw status verbose
+$   sudo ufw allow ssh 
+$   sudo ufw default deny incoming
+$   sudo ufw default allow outgoing
+$   sudo ufw alow http
+$   sudo ufw allow https
+$   sudo systemctl enable ufw
+$   sudo ufw status verbose
 
 Install git :
 
-    $ sudo apt install -y git
+$   sudo apt install -y git
 
 ### STEP 1: Clone the repository
 
-    $ git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
+$   git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
 
 ### STEP 2: Create & define .env
 
 The .env file, stored as a hidden file in the main directory, requires your input. There is a .env_example that you can copy to start.
 
-    $ cp .env_example .env
+$   cp .env_example .env
 
 You now have a .env file. This file contains insecure default values for configuration options. 
 
 During deployment this .env file is used to initialize the configuration files that will be used by your app. The values you input are used for secure authentication.
 
-    $ nano .env
+$   nano .env
 
 This opens the .env file with the nano editor and you are now required to define certain values.
 
@@ -157,7 +157,7 @@ You now have a .env file ready to use for deployment.
 
 ### STEP 3: Deployment with docker-compose
 
-    $ docker-compose up -d 
+$   docker-compose up -d 
 
 
 After a few moments you should see your WordPress app running at https://www.yourdomain.com ready to be configured.
@@ -168,10 +168,10 @@ After a few moments you should see your WordPress app running at https://www.you
 
 ### Bring down the deployment
 
-    $ docker-compose down
+$   docker-compose down
 
 ### Stop & Remove All Containers
 
-    $ docker stop $(docker ps -a -q)
-    $ docker rm $(docker ps -a -q)
+$   docker stop $(docker ps -a -q)
+$   docker rm $(docker ps -a -q)
 
