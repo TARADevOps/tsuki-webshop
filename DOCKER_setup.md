@@ -38,7 +38,7 @@ viii) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
 ### Requirements
 
 * KVM or Similiar Cloud Hypervisor
-* OS: Linux (Debian 10) with Root Privileges and a secondary Non-Root Account
+* OS: Linux (Debian 10) with Root Privileges and a secondary SUDO USER
 * Disk: 64GB - NVMe SSD is recommended 
 * RAM: 4GB   - DDR4 ECC is recommended
 * Docker and Docker-Compose installed on the host machine
@@ -50,10 +50,24 @@ i.e. Docker Engine v18.06.0+
 
 ### Preparing Host Machine
 
-Lockdown SSH access with public-key only :
+SSH into the host machine : 
+
+    $ ssh root@PUBLIC_IP_ADDRESS
+
+Create a secondary SUDO USER
+
+    https://linuxhint.com/create_new_sudo_user_debian10/
+
+Disable root SSH access & enable NEW_USER public-key only access :
 
     https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-debian-10
+
+    https://www.tecmint.com/disable-or-enable-ssh-root-login-and-limit-ssh-access-in-linux/
     
+Confirm Seconday User has SSH access from a new shell : 
+
+    $ ssh NEW_USER@PUBLIC_IP_ADDRESS
+
 Ensure Docker & Docker-compose is installed : 
 
     https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-10
@@ -76,7 +90,11 @@ Enable Uncomplicated Firewall (UFW) :
     $ sudo systemctl enable ufw
     $ sudo ufw status verbose
 
-### STEP 1: Clone the repository into localhost
+Install git :
+
+    $ sudo apt install -y git
+
+### STEP 1: Clone the repository
 
     $ git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
 
