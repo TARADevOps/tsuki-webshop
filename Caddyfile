@@ -1,8 +1,8 @@
 ##Example Caddyfile config for a reverse proxy
 
-www.example.com, example.com {
+www.${YOUR_DOMAIN}, ${YOUR_DOMAIN} {
 
-				proxy / appServer:8080{   #This is the name of your container
+				proxy / appServer:8080{  #This is the name of your NGINX container
 					proxy_header Host {host}
 					proxy_header X-Real-IP {remote}
 					proxy_header X-Forwarded-Proto {scheme}
@@ -14,5 +14,5 @@ www.example.com, example.com {
 
 				gzip
 
-				tls example@example.com #Your email for Let's Encrypt Verification
+				tls ${TLS_EMAIL} #Your email for Let's Encrypt Verification
 }
