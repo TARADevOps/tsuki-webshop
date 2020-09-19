@@ -1,5 +1,6 @@
 # Filename: Dockerfile
 FROM alpine:3.12
+WORKDIR /srv
 
 RUN apk add --no-cache ca-certificates mailcap
 
@@ -45,19 +46,8 @@ RUN [ ! -e /etc/nsswitch.conf ] && echo 'hosts: files dns' > /etc/nsswitch.conf
 VOLUME ./config
 VOLUME ./data
 
-LABEL org.opencontainers.image.version=v2.1.1
-LABEL org.opencontainers.image.title=Caddy
-LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"
-LABEL org.opencontainers.image.url=https://caddyserver.com
-LABEL org.opencontainers.image.documentation=https://caddyserver.com/docs
-LABEL org.opencontainers.image.vendor="TECHWISE SOFTWARE"
-LABEL org.opencontainers.image.licenses=Apache-2.0
-LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy-docker"
-
 EXPOSE 80
 EXPOSE 443
 EXPOSE 2019
-
-WORKDIR /srv
 
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

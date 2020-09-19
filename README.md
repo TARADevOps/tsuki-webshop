@@ -1,12 +1,12 @@
 ### !!! Work In Progress !!!
 
-    NOTE: View DOCKER_setup.md for instructions on how to deploy.
+    NOTE: View DOCKER_setup.md for instructions on how to deploy
     
 # Tsuki Webshop Deployment
 
-## Dockerized WordPress 5 (PHP 7.4), with Nginx (PHP-FPM) & Caddy Server Built on Alpine Linux
+## Dockerized WordPress 5 (PHP 7.4), PHP-FPM, Nginx & Caddy Server Built on Alpine Linux
 
-A docker-compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for in-memory object caching; built on Alpine Linux.
+A Docker-Compose deployment of a single site WordPress instance that is served via PHP-FPM to Nginx relying on MariaDB as the backing database with Redis for in-memory object caching; built on Alpine Linux.
 
 ### Alpine Linux ?
 

@@ -1,11 +1,11 @@
 
-# Deployment of Docker Containers with Docker-Compose
+# Docker-Compose Deployment
 
 ## Overview:
 
-The desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server utilizing PHP-FPM with built in SSL termination & WAF - all ochestrated and managed by Docker-Compose. 
+Desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server utilizing PHP-FPM with built in SSL termination & WAF - all ochestrated and managed by Docker-Compose. 
 
-The deployment is comprised of the following technologies: 
+This deployment is comprised of the following technologies: 
 
 * Alpine Linux : Container Operating System
 * MariaDB      : Relational Database Management System (RDBMS)
@@ -19,13 +19,16 @@ The deployment is comprised of the following technologies:
 ### Table of Content
 
 ```env
-i)   Architecture
-ii)  Requirements
-iii) STEP 1 : Clone the repo
-iv)  STEP 2 : Create required directories
-v)   STEP 3 : Create and define .env file
-vi)  STEP 4 : Deployment with docker-compose
-vii) Remove Containers
+i)    Architecture
+ii)   Requirements
+iii)  Preparing Host Machine
+iv)   STEP 1 : Clone the repository
+v)    STEP 2 : Create and define .env file
+vi)   STEP 3 : Deployment with docker-compose
+vii)  X
+viii) X
+ix)   X
+x)    Stop and Remove Containers
 
 ```
 
@@ -35,36 +38,60 @@ vii) Remove Containers
   
 ### Requirements
 
-* KVM or Similiar Hypervisor
-* OS: Linux with Root Privileges and a secondary Non-Root Account
+* KVM or Similiar Cloud Hypervisor
+* OS: Linux (Debian 10) with Root Privileges and a secondary Non-Root Account
 * Disk: 64GB - NVMe SSD is recommended 
 * RAM: 4GB   - DDR4 ECC is recommended
-* A Fully Qualified Domain Name. This document will use your_domain throughout
-* An A DNS record with your_domain pointing to your server’s public IP address
-* Docker and Docker-Compose installed on the host machine 
+* Docker and Docker-Compose installed on the host machine
+* A Fully Qualified Domain Name (FQDN)
+* An 'A DNS record' with your FQDN pointing to your server’s public IP address
 
 A recent version supporting v3 of docker-compose files is recommended
-i.e. Docker Engine v17.04.0+ 
-  
-### STEP 1: Clone the repo
+i.e. Docker Engine v18.06.0+ 
 
-    git clone https://github.com/tsukidyomi/tsuki-stak.git
+### Preparing Host Machine
 
-### STEP 2: Create required directories
+Lockdown SSH access with public-key only :
 
-    mkdir -p mariadb/ redis/ wordpress logs/nginx/ caddy/ssl
+    https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-debian-10
+    
+Ensure Docker & Docker-compose is installed : 
 
-### STEP 3: Create & define .env file
+    https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-10
+
+    https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-10
+
+Register a Domain Name and point it to your server : 
+
+    https://www.namecheap.com/support/knowledgebase/article.aspx/10072/35/how-to-register-a-domain-name
+
+    https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain
+
+Enable Uncomplicated Firewall (UFW) :
+    
+    $ sudo ufw allow ssh 
+    $ sudo ufw default deny incoming
+    $ sudo ufw default allow outgoing
+    $ sudo ufw alow http
+    $ sudo ufw allow https
+    $ sudo systemctl enable ufw
+    $ sudo ufw status verbose
+
+### STEP 1: Clone the repository into localhost
+
+    $ git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
+
+### STEP 2: Create & define .env file
 
 The .env file, stored as a hidden file in the main directory, requires your input. There is a .env_example that you can copy to start.
 
-    cp .env_example .env
+    $ cp .env_example .env
 
 You now have a .env file. This file contains insecure default values for configuration options. 
 
 During deployment this .env file is used to initialize the configuration files that will be used by your app. The values you input are used for secure authentication.
 
-    nano .env
+    $ nano .env
 
 This opens the .env file with the nano editor and you are now required to define certain values.
 
@@ -111,21 +138,23 @@ Replace "rootpasswd", "user" & "changeme". Exit the file by pressing and holding
 
 You now have a .env file ready to use for deployment.
 
-### STEP 4: Deployment with docker-compose
+### STEP 3: Deployment with docker-compose
 
-    docker-compose up -d 
+    $ docker-compose up -d 
 
 
 After a few moments you should see your WordPress app running at https://www.yourdomain.com ready to be configured.
+
+
 
 ## Further Notes:
 
 ### Bring down the deployment
 
-    docker-compose down
+    $ docker-compose down
 
 ### Stop & Remove All Containers
 
-    docker stop $(docker ps -a -q)
-    docker rm $(docker ps -a -q)
+    $ docker stop $(docker ps -a -q)
+    $ docker rm $(docker ps -a -q)
 
