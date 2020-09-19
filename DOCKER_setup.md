@@ -7,28 +7,28 @@ Desired result of the following document is a deployment of a stack of Docker co
 
 This deployment is comprised of the following technologies: 
 ```env
-* Alpine Linux : Container Operating System
-* MariaDB      : Relational Database Management System (RDBMS)
-* PHP Redis    : In-Memory, Schema-Less Database Object Caching
-* PHP 7.4      : General-Purpose Scripting Language
-* WordPress 5  : Content Management System written in PHP
-* PHP-FPM      : PHP FastCGI Process Manager
-* Nginx        : Application Server
-* Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
+i)    Alpine Linux : Container Operating System
+ii)   MariaDB      : Relational Database Management System (RDBMS)
+iii)  PHP Redis    : In-Memory, Schema-Less Database Object Caching
+iv)   PHP 7.4      : General-Purpose Scripting Language
+v)    WordPress 5  : Content Management System written in PHP
+vi)   PHP-FPM      : PHP FastCGI Process Manager
+vii)  Nginx        : Application Server
+viii) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
 ```
 
 ### Table of Content
 
-i)    Architecture
-ii)   Requirements
-iii)  Preparing Host Machine
-iv)   STEP 1 : Clone the repository
-v)    STEP 2 : Create and define .env file
-vi)   STEP 3 : Deployment with docker-compose
-vii)  X
-viii) X
-ix)   X
-x)    Stop and Remove Containers
+* Architecture
+* Requirements
+* Preparing Host Machine
+* STEP 1 : Clone the repository
+* STEP 2 : Create and define .env file
+* STEP 3 : Deployment with docker-compose
+* X
+* X
+* X
+* Stop and Remove Containers
 
 
 ### Architecture
