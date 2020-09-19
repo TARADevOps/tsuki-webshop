@@ -1,6 +1,6 @@
 ### !!! Work In Progress !!!
 
-    NOTE: View DOCKER_setup.md for instructions on how to deploy
+    NOTE: View https://github.com/tsukidyomi/tsuki-stak/blob/master/DOCKER_setup.md for instructions on how to deploy
     
 # Tsuki Webshop Deployment
 

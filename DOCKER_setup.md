@@ -168,10 +168,10 @@ After a few moments you should see your WordPress app running at https://www.you
 
 ### Bring down the deployment
 
-   docker-compose down
+    docker-compose down
 
 ### Stop & Remove All Containers
 
-   docker stop $(docker ps -a -q)
-   docker rm $(docker ps -a -q)
+    docker stop $(docker ps -a -q)
+    docker rm $(docker ps -a -q)
 
