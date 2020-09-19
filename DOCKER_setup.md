@@ -6,7 +6,7 @@
 Desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server utilizing PHP-FPM with built in SSL termination & WAF - all ochestrated and managed by Docker-Compose. 
 
 This deployment is comprised of the following technologies: 
-
+```env
 * Alpine Linux : Container Operating System
 * MariaDB      : Relational Database Management System (RDBMS)
 * PHP Redis    : In-Memory, Schema-Less Database Object Caching
@@ -15,10 +15,10 @@ This deployment is comprised of the following technologies:
 * PHP-FPM      : PHP FastCGI Process Manager
 * Nginx        : Application Server
 * Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
+```
 
 ### Table of Content
 
-```env
 i)    Architecture
 ii)   Requirements
 iii)  Preparing Host Machine
@@ -30,7 +30,6 @@ viii) X
 ix)   X
 x)    Stop and Remove Containers
 
-```
 
 ### Architecture
 
