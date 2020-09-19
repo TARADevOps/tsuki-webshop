@@ -1,8 +1,8 @@
-##Example Caddyfile config for a reverse proxy
+## Example Caddyfile config for a reverse proxy
 
 www.${YOUR_DOMAIN}, ${YOUR_DOMAIN} {
 
-				proxy / appServer:8080{  #This is the name of your NGINX container
+				proxy / nginx:8080{  #This is the name of your NGINX container
 					proxy_header Host {host}
 					proxy_header X-Real-IP {remote}
 					proxy_header X-Forwarded-Proto {scheme}

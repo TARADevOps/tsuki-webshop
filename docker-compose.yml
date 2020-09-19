@@ -2,25 +2,21 @@ version: '3.7'
 services:
 
   caddy:
-    container_name: WebServer
-    image: alpine:3.12
-    build: /caddy/.
+    container_name: caddy
+    image: caddy:${CADDY_VERSION}
     volumes:
-      - ${CADDY_CONFIG_DIR}:/config/caddy
-      - ${CADDY_DATA_DIR}:/data/caddy
+      - ${CADDY_CONF_DIR}:/config
+      - ${CADDY_DATA_DIR}:/data
       - ${WP_DATA_DIR}:/var/www/html
-      - ./caddy/.caddy:/root/.caddy
-
-		:/etc/caddy \
-		:/usr/share/caddy
-
     ports:
       -   80:80
       -   443:443
       -   2019:2019
-  
+    links:
+      - nginx
+    restart: unless-stopped
   nginx:
-    container_name: AppServer
+    container_name: nginx
     image: nginx:${NGINX_VERSION}
     volumes:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
@@ -31,30 +27,8 @@ services:
     links:
       - wordpress
     restart: unless-stopped
-
-  mariadb:
-    container_name: Database
-    image: mariadb:${MARIADB_VERSION}
-    volumes:
-      - ${MDB_DATA_DIR}:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-    restart: unless-stopped
-
-  redis:
-    container_name: dbCache
-    image: redis:${REDIS_VERSION}
-    volumes:
-      - ${DB_CACHE_DATA_DIR}:/data
-    restart: unless-stopped
-    links:
-      - wordpress
-
   wordpress:
-    container_name: WP_PHP_FPM_7.4
+    container_name: wordpress
     image: wordpress:${WP_VERSION}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
@@ -67,7 +41,24 @@ services:
       - WORDPRESS_DB_NAME:${MDB_NAME}
       - WORDPRESS_TABLE_PREFIX:${MDB_TABLE_PREFIX}
     depends_on:
-      - mariadb
+      - db
     restart: unless-stopped
-
- 
+  db:
+    container_name: db
+    image: mariadb:${MARIADB_VERSION}
+    volumes:
+      - ${MDB_DATA_DIR}:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    restart: unless-stopped
+  redis:
+    container_name: redis
+    image: redis:${REDIS_VERSION}
+    volumes:
+      - ${DB_CACHE_DATA_DIR}:/data
+    restart: unless-stopped
+    links:
+      - wordpress

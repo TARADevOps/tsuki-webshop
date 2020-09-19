@@ -3,28 +3,28 @@
 
 ## Overview:
 
-Desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server, utilizing PHP-FPM with built in SSL termination & WAF; fully automated by Docker-Compose. 
+Desired result of the following document is a deployment of a stack of Docker containers providing a production ready backend that serves PHP code to the application server, utilizing PHP-FPM with built in SSL termination & Web Application Firewall; fully automated by Docker-Compose. 
 
 This deployment is comprised of the following technologies: 
 ```env
-i)    Alpine Linux : Container Operating System
-ii)   MariaDB      : Relational Database Management System (RDBMS)
-iii)  Redis        : In-Memory, Schema-Less Database Object Caching
-iv)   PHP 7.4      : General-Purpose Scripting Language
-v)    WordPress 5  : Content Management System (CMS)
-vi)   PHP-FPM      : PHP FastCGI Process Manager
-vii)  Nginx        : Application Server
-viii) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
+I)    Alpine Linux : Container Operating System
+II)   MariaDB      : Relational Database Management System (RDBMS)
+III)  Redis        : In-Memory, Schema-Less Database Object Caching
+IV)   PHP 7.4      : General-Purpose Scripting Language
+V)    WordPress 5  : Content Management System (CMS)
+VI)   PHP-FPM      : PHP FastCGI Process Manager
+VII)  Nginx        : Application Server
+VIII) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
 ```
 
 ### Table of Content
 
 * Architecture
 * Requirements
-* Preparing Host Machine
-* STEP 1 : Clone the repository
-* STEP 2 : Create and define .env
-* STEP 3 : Deployment with docker-compose
+* Preparation
+* Clone the repository
+* Create and define .env
+* Docker-Compose Deployment
 * X
 * X
 * X
@@ -45,10 +45,17 @@ viii) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
 * A Fully Qualified Domain Name (FQDN)
 * An 'A DNS record' with your FQDN pointing to your server’s public IP address
 
-A recent version supporting v3 of docker-compose files is recommended
+A recent version supporting v3 of docker-compose files is required
 i.e. Docker Engine v18.06.0+ 
 
-### Preparing Host Machine
+### Preparation
+
+Register a Domain Name and point it to your server : 
+
+* https://www.namecheap.com/support/knowledgebase/article.aspx/10072/35/how-to-register-a-domain-name
+
+* https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain
+
 
 SSH into the host machine : 
 
@@ -73,12 +80,6 @@ Ensure Docker & Docker-compose is installed :
 * https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-10
 
 * https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-10
-
-Register a Domain Name and point it to your server : 
-
-* https://www.namecheap.com/support/knowledgebase/article.aspx/10072/35/how-to-register-a-domain-name
-
-* https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain
 
 Enable Uncomplicated Firewall (UFW) :
     
