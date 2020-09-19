@@ -23,7 +23,7 @@ viii) Caddy        : Reverse Proxy (SSL termination + Web Application Firewall)
 * Requirements
 * Preparing Host Machine
 * STEP 1 : Clone the repository
-* STEP 2 : Create and define .env file
+* STEP 2 : Create and define .env
 * STEP 3 : Deployment with docker-compose
 * X
 * X
@@ -98,7 +98,7 @@ Install git :
 
     $ git clone https://github.com/tsukidyomi/tsuki-stak.git tsuki-webshop
 
-### STEP 2: Create & define .env file
+### STEP 2: Create & define .env
 
 The .env file, stored as a hidden file in the main directory, requires your input. There is a .env_example that you can copy to start.
 
