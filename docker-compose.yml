@@ -3,11 +3,13 @@ services:
 
   caddy:
     container_name: caddy
-    image: caddy:${CADDY_VERSION}
+    image: "techwise/reverse-proxy:${CADDY_VERSION_TAG}"
+    build:
+      dockerfile: ${CADDY_DOCKERFILE}
     volumes:
-      - ${CADDY_CONF_DIR}:/config
-      - ${CADDY_DATA_DIR}:/data
-      - ${WP_DATA_DIR}:/var/www/html
+      - ${CADDY_DIR}:/root/.caddy
+      - ${CADDY_SSL}:/root/certs # to sync SSL certificates to Caddy
+      - ${CADDYFILE}:/etc/caddy/Caddyfile # to mount custom Caddyfile
     ports:
       -   80:80
       -   443:443
@@ -15,9 +17,15 @@ services:
     links:
       - nginx
     restart: unless-stopped
+    networks:
+      shopnet:
+        ipv4_address: 172.28.1.1
+
   nginx:
     container_name: nginx
-    image: nginx:${NGINX_VERSION}
+    image: "techwise/app_server:${NGINX_VERSION_TAG}"
+    build:
+      dockerfile: ${NGINX_DOCKERFILE}
     volumes:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
       - ${NGINX_LOG_DIR}:/var/log/nginx
@@ -27,9 +35,15 @@ services:
     links:
       - wordpress
     restart: unless-stopped
+    networks:
+      shopnet:
+        ipv4_address: 172.28.1.2
+
   wordpress:
     container_name: wordpress
-    image: wordpress:${WP_VERSION}
+    image: "techwise/wp_app:${WP_VERSION_TAG}"
+    build:
+      dockerfile: ${WORDPRESS_DOCKERFILE}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ${WP_DATA_DIR}:/var/www/html
@@ -43,6 +57,10 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    networks:
+      shopnet:
+        ipv4_address: 172.28.1.3
+
   db:
     container_name: db
     image: mariadb:${MARIADB_VERSION}
@@ -54,11 +72,28 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
     restart: unless-stopped
+    networks:
+      shopnet:
+        ipv4_address: 172.28.1.4
+
   redis:
     container_name: redis
-    image: redis:${REDIS_VERSION}
+    image: "techwise/db_cache:${REDIS_VERSION_TAG}"
+    build:
+      dockerfile: ${REDIS_DOCKERFILE}
     volumes:
       - ${DB_CACHE_DATA_DIR}:/data
     restart: unless-stopped
     links:
       - wordpress
+    networks:
+      shopnet:
+        ipv4_address: 172.28.1.5
+
+networks:
+  shopnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
