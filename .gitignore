@@ -4,19 +4,20 @@
 .env*
 !.env_example # Exception
 # Reverse Proxy
-!caddy/
+caddy/
 !caddy/Dockerfile # Exception
 # Web Server:
-!nginx/
+nginx/
 !nginx/default.conf # Exception
 !nginx/Dockerfile # Exception
 # PHP-FPM Application:
-!wordpress/
+wordpress/
 !wordpress/Dockerfile # Exception
 # Application RDBMS:
-!mariadb/
+mariadb/
+!mariadb/Dockerfile # Exception
 # Redis Cache
-!redis/
-
+redis/
+!redis/Dockerfile # Exception
 # TSUKI.DIGITAL PHP settings:
 uploads.ini
