@@ -7,7 +7,7 @@
 caddy/
 !caddy/Dockerfile # Exception
 # Web Server:
-!nginx/
+!nginx/logs
 !nginx/default.conf # Exception
 !nginx/Dockerfile # Exception
 # PHP-FPM Application:
