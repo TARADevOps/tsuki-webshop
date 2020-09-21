@@ -2,22 +2,22 @@
 
 # Secret variables (passwords etc):
 .env*
-!.env_example # Exception
+!.env_example
 # Reverse Proxy
 caddy/
-!caddy/Dockerfile # Exception
+!caddy/Dockerfile
 # Web Server:
 nginx/
-!nginx/default.conf # Exception
-!nginx/Dockerfile # Exception
+!nginx/default.conf
+!nginx/Dockerfile
 # PHP-FPM Application:
 wordpress/
-!wordpress/Dockerfile # Exception
-# Application RDBMS:
-mariadb/
-!mariadb/Dockerfile # Exception
+!wordpress/Dockerfile
 # Redis Cache
 redis/
-!redis/Dockerfile # Exception
+!redis/Dockerfile
+# Application RDBMS:
+mariadb/
+!mariadb/Dockerfile
 # TSUKI.DIGITAL PHP settings:
 uploads.ini
