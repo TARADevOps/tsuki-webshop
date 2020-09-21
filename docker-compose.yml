@@ -23,7 +23,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: "techwise/app_server:${NGINX_VERSION_TAG}"
+    image: "techwise/web_server:${NGINX_VERSION_TAG}"
     build:
       dockerfile: ${NGINX_DOCKERFILE}
     volumes:
@@ -63,9 +63,9 @@ services:
 
   db:
     container_name: db
-    image: mariadb:${MARIADB_VERSION}
+    image: techwise/app_db:${DB_VERSION_TAG}
     volumes:
-      - ${MDB_DATA_DIR}:/var/lib/mysql
+      - ${DB_DATA_DIR}:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
