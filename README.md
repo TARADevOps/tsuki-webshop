@@ -1,8 +1,5 @@
-### !!! Work In Progress !!!
-
-Deployment Manual : https://github.com/tsukidyomi/tsuki-stak/blob/master/DOCKER_setup.md
     
-# Tsuki Webshop Deployment
+# Tsuki WebShop Deployment
 
 ## Dockerized WordPress 5 (PHP 7.4), PHP-FPM, Nginx & Caddy Server Built on Alpine Linux
 
@@ -36,7 +33,7 @@ More information at: https://github.com/docker/compose
 
 Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go
 
-Caddy simplifies your infrastructure. It takes care of TLS certificate renewals, OCSP stapling, static file serving, reverse proxying, Kubernetes ingress, and more.
+Caddy simplifies your infrastructure. It takes care of TLS Management & Termination, OCSP Stapling, Reverse Proxying & Ingress, Web Application Firewall, Lossless Compression (brotli) and more.
 
 More information at: https://caddyserver.com/
 
@@ -48,7 +45,7 @@ More information at: https://www.nginx.com
 
 ### PHP-FPM ?
 
-PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites. 
+PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI Application Server with some additional features useful for sites of any size, especially busier sites. 
 
 These features include:
 
@@ -61,7 +58,9 @@ These features include:
 * Support for a "slowlog"
 * Enhancements to FastCGI, such as fastcgi_finish_request()
 
-More information at: https://php-fpm.org/about/
+... and much more.
+
+More information at: https://php-fpm.org/
 
 ### WordPress ? 
 
@@ -88,6 +87,14 @@ Experience the same benefits as customers like Deutsche Bank, DBS Bank, Nasdaq, 
 
 More information at: https://mariadb.com/
 
+### Portainer ?
+
+Portainer simplifies container management in Docker, Swarm, Kubernetes, ACI and Edge environments. It's used by software engineers to speed up software deployments, troubleshoot problems and simplify migrations.
+
+MAKING CONTAINER MANAGEMENT EASY.
+
+More information at: https://www.portainer.io/
+
 ### Who are we ?
 
-We are Tsuki (https://www.tsuki.digital) and we are proudly open sourced.
+We are Techwise Technologies and we are proudly open sourced.

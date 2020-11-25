@@ -1,23 +1,4 @@
-#This file EXCLUDES the following from being pushed to Github Repo!
-
 # Secret variables (passwords etc):
 .env*
 !.env_example
-# Reverse Proxy
-caddy/
-!caddy/Dockerfile
-# Web Server:
-nginx/
-!nginx/default.conf
-!nginx/Dockerfile
-# PHP-FPM Application:
-wordpress/
-!wordpress/Dockerfile
-# Redis Cache
-redis/
-!redis/Dockerfile
-# Application RDBMS:
-mariadb/
-!mariadb/Dockerfile
-# TSUKI.DIGITAL PHP settings:
-uploads.ini
+

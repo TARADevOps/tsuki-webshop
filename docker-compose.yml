@@ -1,71 +1,78 @@
 version: '3.7'
-services:
 
+services:
   caddy:
-    container_name: caddy
-    image: "techwise/reverse-proxy:${CADDY_VERSION_TAG}"
-    build:
-      dockerfile: ${CADDY_DOCKERFILE}
+    container_name: Reverse_Proxy
+    image: caddy:2-alpine
     volumes:
-      - ${CADDY_DIR}:/root/.caddy
-      - ${CADDY_SSL}:/root/certs # to sync SSL certificates to Caddy
-      - ${CADDYFILE}:/etc/caddy/Caddyfile # to mount custom Caddyfile
+      - ${CADDYFILE}:/etc/caddy/Caddyfile
+      - ${CADDY_DATA_DIR}:/data
+      - ${CADDY_CONF_DIR}:/config
     ports:
-      -   80:80
-      -   443:443
-      -   2019:2019
-    links:
-      - nginx
+      - "80:80"
+      - "443:443"
     restart: unless-stopped
     networks:
-      shopnet:
-        ipv4_address: 172.28.1.1
+      web:
+        ipv4_address: 192.168.1.3
 
   nginx:
-    container_name: nginx
-    image: "techwise/web_server:${NGINX_VERSION_TAG}"
-    build:
-      dockerfile: ${NGINX_DOCKERFILE}
+    container_name: Web_Server
+    image: nginx:stable-alpine
     volumes:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
       - ${NGINX_LOG_DIR}:/var/log/nginx
-      - ${WP_DATA_DIR}:/var/www/html
-    ports:
-      - '8080:80'
-    links:
+      - ${WORDPRESS_DATA_DIR}:/var/www/html
+    depends_on:
       - wordpress
     restart: unless-stopped
     networks:
-      shopnet:
-        ipv4_address: 172.28.1.2
+      private_net:
+        ipv4_address: 172.18.1.1
+      web:
+        ipv4_address: 192.168.1.11
 
   wordpress:
-    container_name: wordpress
-    image: "techwise/wp_app:${WP_VERSION_TAG}"
-    build:
-      dockerfile: ${WORDPRESS_DOCKERFILE}
+    container_name: WordPress
+    image: wordpress:php7.4-fpm-alpine
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ${WP_DATA_DIR}:/var/www/html
+      - ./wordpress:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
-      - WORDPRESS_DB_HOST:db
-      - WORDPRESS_DB_USER:${DB_USER}
-      - WORDPRESS_DB_PASSWORD:${DB_PASSWORD}
-      - WORDPRESS_DB_NAME:${DB_NAME}
-      - WORDPRESS_TABLE_PREFIX:${DB_TABLE_PREFIX}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
     depends_on:
       - db
     restart: unless-stopped
     networks:
-      shopnet:
-        ipv4_address: 172.28.1.3
+      private_net:
+        ipv4_address: 172.18.1.2
+
+  redis:
+    container_name: DB_CACHE
+    image: redis:alpine
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./redis/redis.conf:/etc/redis/redis.conf
+      - ./redis:/var/lib/redis
+    environment:
+     - REDIS_REPLICATION_MODE=master
+    links:
+      - wordpress
+    restart: unless-stopped
+    networks:
+      private_net:
+        ipv4_address: 172.18.1.3
 
   db:
-    container_name: db
-    image: techwise/app_db:${DB_VERSION_TAG}
+    container_name: DB
+    image: mariadb:10.5
     volumes:
-      - ${DB_DATA_DIR}:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
@@ -73,27 +80,33 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
     restart: unless-stopped
     networks:
-      shopnet:
-        ipv4_address: 172.28.1.4
+      private_net:
+        ipv4_address: 172.18.1.4
 
-  redis:
-    container_name: redis
-    image: "techwise/db_cache:${REDIS_VERSION_TAG}"
-    build:
-      dockerfile: ${REDIS_DOCKERFILE}
-    volumes:
-      - ${DB_CACHE_DATA_DIR}:/data
-    restart: unless-stopped
-    links:
-      - wordpress
+  portainer:
+    container_name: DEV_PANEL
+    image: portainer/portainer-ce
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
     networks:
-      shopnet:
-        ipv4_address: 172.28.1.5
+      web:
+        ipv4_address: 192.168.1.7
 
 networks:
-  shopnet:
+  web:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 172.28.0.0/16
+        - subnet: 192.168.1.0/24
+  private_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+
+volumes:
+  portainer_data: {}

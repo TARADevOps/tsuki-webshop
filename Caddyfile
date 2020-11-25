@@ -1,0 +1,11 @@
+{
+    experimental_http3
+}
+
+example.com, www.example.com {
+        reverse_proxy nginx
+}
+
+devpanel.example.com{
+        reverse_proxy portainer
+}
