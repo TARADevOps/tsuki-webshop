@@ -9,7 +9,7 @@ This deployment is comprised of the following technologies:
 ```env
 I)    Alpine Linux OS : Container Operating System
 II)   MariaDB         : Relational Database Management System ( RDBMS )
-III)  RedisDB Cache   : In-Memory, Schema-Less Database Object Caching
+III)  RedisDB Cache   : In-Memory, Schema-Less Database Object Cache
 IV)   PHP 7.4         : Hypertext Preprocessor ( General-Purpose Scripting Language )
 V)    WordPress 5     : Content Management System ( CMS )
 VI)   PHP-FPM         : Application Server ( FastCGI Process Manager )
@@ -159,11 +159,11 @@ This opens the  Caddyfile with the nano editor and you are now required to input
 }
 
 yourdomain.com, www.yourdomain.com {
-        reverse_proxy nginx
+        reverse_proxy 127.0.0.1:8080
 }
 
-devpanel.yourdomain.com{
-        reverse_proxy portainer
+devpanel.yourdomain.com {
+        reverse_proxy 127.0.0.1:9000
 }
 
 ```

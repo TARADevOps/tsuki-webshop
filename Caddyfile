@@ -3,9 +3,9 @@
 }
 
 example.com, www.example.com {
-        reverse_proxy nginx
+        reverse_proxy 127.0.0.1:8080
 }
 
-devpanel.example.com{
-        reverse_proxy portainer
+devpanel.example.com {
+        reverse_proxy 127.0.0.1:9000
 }
