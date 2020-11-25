@@ -13,7 +13,7 @@ III)  RedisDB Cache   : In-Memory, Schema-Less Database Object Cache
 IV)   PHP 7.4         : Hypertext Preprocessor ( General-Purpose Scripting Language )
 V)    WordPress 5     : Content Management System ( CMS )
 VI)   PHP-FPM         : Application Server ( FastCGI Process Manager )
-VII)  Nginx           : Web Server ( FASTCGI Caching & Lossless Compression )
+VII)  Nginx           : Web Server ( FASTCGI_CACHE & Lossless Compression )
 VIII) Caddy           : Reverse Proxy ( HTTP/3 | TLS Management | Application Firewall  )
 IX)   Portainer       : Container Management UI
 ```
