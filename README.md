@@ -91,7 +91,7 @@ More information at: https://mariadb.com/
 
 Portainer simplifies container management in Docker, Swarm, Kubernetes, ACI and Edge environments. It's used by software engineers to speed up software deployments, troubleshoot problems and simplify migrations.
 
-MAKING CONTAINER MANAGEMENT EASY.
+Making Container Management Easy.
 
 More information at: https://www.portainer.io/
 
