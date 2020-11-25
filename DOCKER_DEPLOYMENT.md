@@ -177,7 +177,7 @@ Exit the file by pressing and holding ctrl + x. This will initiate a prompt that
 
 ### Congratulations !!!
 
-After a few moments you should see your WordPress app running at https://www.yourdomain.com ready to be configured.
+After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
 
 ### Bring down the deployment
 
