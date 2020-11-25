@@ -179,11 +179,11 @@ Exit the file by pressing and holding ctrl + x. This will initiate a prompt that
 
 After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
 
-### Bring down the deployment
+### Stoppage of Deployment
 
     docker-compose down
 
-### Stop & Remove All Containers
+### Removal of Containers
 
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
