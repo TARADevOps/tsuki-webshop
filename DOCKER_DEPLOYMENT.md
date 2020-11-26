@@ -189,7 +189,7 @@ Go To Plugins on the Left Menu & Delete the 2 default options (Hello Dolly & Aki
 
 Add 2 New Plugins By Till Krüss :
 
-    I)  Redis Cache
+    I)  Redis Object Cache
     II) Nginx Cache
 
 Before Activating the Plugins, we have one more Step. 
