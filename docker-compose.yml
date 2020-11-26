@@ -37,6 +37,7 @@ services:
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wordpress:/var/www/html
+      - ./wordpress/cache:/var/www/html/cache
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
       - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
