@@ -96,6 +96,7 @@ Install git :
 ### STEP 1: Clone Repository
 
     git clone https://github.com/techwise-technologies/tsuki-webshop.git my-webshop
+    cd my-webshop/
 
 ### STEP 2: Environment Variables
 
