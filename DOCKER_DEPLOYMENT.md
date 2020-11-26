@@ -187,7 +187,7 @@ Go to your domain and Follow the Steps to install WordPress. Keep a Copy of the 
 
 Go To Plugins on the Left Menu & Delete the 2 default options (Hello Dolly & Akismet). 
 
-Add 2 New Plugins By Till Krusse:
+Add 2 New Plugins By Till Krüss :
 
     I)  Redis Cache
     II) Nginx Cache
