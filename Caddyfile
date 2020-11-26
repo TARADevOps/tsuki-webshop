@@ -2,10 +2,10 @@
     experimental_http3
 }
 
-example.com, www.example.com {
+yourdomain.com, www.yourdomain.com {
         reverse_proxy 127.0.0.1:8080
 }
 
-devpanel.example.com {
+devpanel.yourdomain.com {
         reverse_proxy 127.0.0.1:9000
 }
