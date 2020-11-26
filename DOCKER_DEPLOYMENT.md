@@ -147,7 +147,7 @@ You now have a .env file ready to use for deployment.
 
 ### STEP 3: Add Directories with Permissions
 
-    mkdir -p mariadb/ wordpress/ caddy/ logs/nginx/
+    mkdir -p mariadb/ wordpress/cache/ caddy/ logs/nginx/
 
 
 ### STEP 4: Configure Caddyfile

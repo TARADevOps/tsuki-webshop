@@ -21,6 +21,7 @@ services:
       - ${NGINX_CONF_DIR}:/etc/nginx/conf.d
       - ${NGINX_LOG_DIR}:/var/log/nginx
       - ${WORDPRESS_DATA_DIR}:/var/www/html
+      - ${FASTCGI_CACHE_DIR}:/var/run/nginx
     ports:
       - "8080:80"
     depends_on:
