@@ -170,7 +170,7 @@ devpanel.yourdomain.com {
 
 ```
 
-Replace all occurances of "yourdomain.com" with your own domain name. 
+Replace all occurances of "yourdomain.com" with your Desired domain name. 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
 ### STEP 5: Deployment with Docker-Compose
