@@ -3,7 +3,7 @@
 
 ## Overview:
 
-Desired outcome of this Document is a Deployment of a Stack of Docker Containers providing a production backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Brotli Compression. The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Application Firewall. Automation & Orchestration by Docker-Compose. Dev / Admin UI by Portainer.
+Desired Outcome of this Document is a Deployment of a Stack of Docker Containers providing a Production Backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Brotli Compression. The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Application Firewall. Automation & Orchestration by Docker-Compose. Dev / Admin UI by Portainer.
 
 This deployment is comprised of the following technologies: 
 ```env
@@ -27,10 +27,12 @@ IX)   Portainer       : Container Management UI
 * Environment Variables
 * Add Directories with Permissions
 * Configure Caddyfile
-* Deployment with docker-compose
+* Deployment with Docker-Compose
+* WordPress Installation & Configuration
+* Update Wp-Config.Php
+* Portainer Admin UI
 * Stoppage of Deployment
 * Removal of Containers
-
 
 ### Architecture
 
@@ -171,17 +173,15 @@ devpanel.yourdomain.com {
 Replace all occurances of "yourdomain.com" with your own domain name. 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
-### STEP 5: Deployment with docker-compose
+### STEP 5: Deployment with Docker-Compose
 
 Time to Deploy, Run this Command and Watch the code Execute. It may take a few minutes, be patient.
 
      docker-compose up -d 
 
-### Congratulations !!!
-
 After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
 
-### WordPress Installation & Configuration
+### STEP 6: WordPress Installation & Configuration
 
 Go to your domain and Follow the Steps to install WordPress. Keep a Copy of the Username & Password, this shall be the Admin Credentials for the WordPress Application. Log into the WordPress Admin Panel.
 
@@ -194,7 +194,7 @@ Add 2 New Plugins By Till Krusse:
 
 Before Activating the Plugins, we have one more Step. 
 
-### Update wp-config.php
+### STEP 7: Update Wp-Config.Php
 
 Navigate to the wordpress folder and open the wp-config.php in nano
 
@@ -216,8 +216,11 @@ AND Add This at the very Bottom of the file:
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
 In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
+Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check to Verify you Have a Healthy Application.
 
-Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check.
+### STEP 8: Portainer Admin UI
+
+Navigate to Your DevPanel URL and Folow the Instructions to Create an Admin User. Keep a Copy of the Credentials. Log into the Admin UI.
 
 ### Stoppage of Deployment
 
