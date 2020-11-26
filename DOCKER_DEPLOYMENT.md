@@ -203,7 +203,8 @@ Before Activating the Plugins, we have one more Step.
 
 Navigate to the wordpress folder and open the wp-config.php in nano
 
-    nano ~/wordpress/wp-config.php
+    cd wordpress/
+    sudo nano wp-config.php
 
 Add The Following Settings just above the MYSQL entries:
 
