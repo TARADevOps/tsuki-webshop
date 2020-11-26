@@ -178,7 +178,7 @@ Exit the file by pressing and holding ctrl + x. This will initiate a prompt that
 
 Time to Deploy, Run this Command and Watch the code Execute. It may take a few minutes, be patient.
 
-     docker-compose up -d 
+    docker-compose up -d 
 
 If you Wish to View the Containers in the Shell
 
