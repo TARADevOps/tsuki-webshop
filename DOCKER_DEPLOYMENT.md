@@ -3,7 +3,7 @@
 
 ## Overview:
 
-Desired result of the following document is a deployment of a stack of Docker containers providing a production backend that serves PHP code via the PHP-FPM application server with built in Caching, Compression, TLS Management & Application Firewall; Automation & Orchestration by Docker-Compose. 
+Desired outcome of this Document is a Deployment of a Stack of Docker Containers providing a production backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Brotli Compression. The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Application Firewall. Automation & Orchestration by Docker-Compose. Dev / Admin UI by Portainer.
 
 This deployment is comprised of the following technologies: 
 ```env
@@ -103,7 +103,7 @@ The .env file, stored as a hidden file in the main directory, requires your inpu
 
 You now have a .env file. This file contains insecure default values for configuration options. 
 
-During deployment this .env file is used to initialize the configuration files that will be used by your application. The values you input are used for secure authentication.
+During deployment this .env file is used to by YOUR WordPress Application to initialize the configuration files. The values you input are used for secure authentication between the Services running within the Docker Containers. It is important to keep a copy of the values you input as only you have them.
 
     nano .env
 
@@ -173,11 +173,51 @@ Exit the file by pressing and holding ctrl + x. This will initiate a prompt that
 
 ### STEP 5: Deployment with docker-compose
 
+Time to Deploy, Run this Command and Watch the code Execute. It may take a few minutes, be patient.
+
      docker-compose up -d 
 
 ### Congratulations !!!
 
 After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
+
+### WordPress Installation & Configuration
+
+Go to your domain and Follow the Steps to install WordPress. Keep a Copy of the Username & Password, this shall be the Admin Credentials for the WordPress Application. Log into the WordPress Admin Panel.
+
+Go To Plugins on the Left Menu & Delete the 2 default options (Hello Dolly & Akismet). 
+
+Add 2 New Plugins By Till Krusse:
+
+    I)  Redis Cache
+    II) Nginx Cache
+
+Before Activating the Plugins, we have one more Step. 
+
+### Update wp-config.php
+
+Navigate to the wordpress folder and open the wp-config.php in nano
+
+    nano ~/wordpress/wp-config.php
+
+Add The Following Settings just above the MYSQL entries:
+
+    // ** REDIS settings ** //
+    define( 'WP_CACHE_KEY_SALT', 'wp-docker-redis');
+    define( 'WP_REDIS_HOST', 'redis');
+    define( 'WP_REDIS_PASSWORD', 'very_very_strong_password');      <------------ EDIT THIS
+
+Replace very_very_strong_password with the SAME value you used previously for this key. 
+AND Add This at the very Bottom of the file:
+
+    /** FTP updates fix. */
+    define('FS_METHOD','direct');
+
+Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
+
+In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
+
+Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check.
 
 ### Stoppage of Deployment
 
@@ -187,4 +227,6 @@ After a few moments you should see your WordPress app running at https://www.you
 
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
+    docker image prune -a
+
 
