@@ -180,6 +180,10 @@ Time to Deploy, Run this Command and Watch the code Execute. It may take a few m
 
      docker-compose up -d 
 
+If you Wish to View the Containers in the Shell
+
+    docker ps
+
 After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
 
 ### STEP 6: WordPress Installation & Configuration
