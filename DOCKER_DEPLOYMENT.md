@@ -221,6 +221,11 @@ AND Add This at the very Bottom of the file:
 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
+Reload the Changes
+
+    cd ..
+    docker-compose up -d
+
 In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
 Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check to Verify you Have a Healthy Application.
 
