@@ -97,4 +97,4 @@ More information at: https://www.portainer.io/
 
 ### Who are we ?
 
-We are Techwise Technologies and we are proudly open sourced.
+We are Techwise Technologies and we ♥  open source.
