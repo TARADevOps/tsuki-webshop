@@ -34,9 +34,10 @@ IX)   Portainer       : Container Management UI
 * Deployment with Docker-Compose
 * WordPress Installation & Configuration
 * Update Wp-Config.Php
+* Activate Plugins & Health Check
 * Portainer Admin UI
 * Stoppage of Deployment
-* Removal of Containers
+* Removal of Containers & Images
 
 ### Architecture
 
@@ -110,7 +111,9 @@ The .env file, stored as a hidden file in the main directory, requires your inpu
 
 You now have a .env file. This file contains insecure default values for configuration options. 
 
-During deployment this .env file is used to by YOUR WordPress Application to initialize the configuration files. The values you input are used for secure authentication between the Services running within the Docker Containers. It is important to keep a copy of the values you input as only you have them.
+During deployment this .env file is used to by YOUR WordPress Application to initialize the configuration files. 
+
+The values you input are used for secure authentication between the Services running within the Docker Containers. It is important to keep a copy of the values you input as only you have them.
 
     nano .env
 
@@ -145,7 +148,10 @@ MYSQL_DATABASE=yourdomain_com_wp                         <------------ EDIT THIS
 
 ```
 Replace all occurances of "yourdomain_com", "strong_password", "very_strong_password" & "very_very_strong_password" as desired. 
-Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
+
+Exit the file by pressing and holding ctrl + x. 
+
+This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
 You now have a .env file ready to use for deployment.
 
@@ -176,7 +182,9 @@ devpanel.yourdomain.com {
 ```
 
 Replace all occurances of "yourdomain.com" with your Desired domain name. 
-Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
+Exit the file by pressing and holding ctrl + x. 
+
+This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
 ### STEP 5: Deployment with Docker-Compose
 
@@ -184,11 +192,11 @@ Time to Deploy, Run this Command and Watch the code Execute. It may take a few m
 
     docker-compose up -d 
 
-If you Wish to View the Containers in the Shell
 
-    docker ps
+After a few moments your WordPress Application & Your Admin UI is ready to be configured.
 
-After a few moments you should see your WordPress app running at https://www.yourdomain.com & your Admin UI at https://devpanel.yourdomain.com ready to be configured.
+WordPress Application: https://www.yourdomain.com 
+Admin UI :             https://devpanel.yourdomain.com 
 
 ### STEP 6: WordPress Installation & Configuration
 
@@ -218,6 +226,7 @@ Add The Following Settings just above the MYSQL entries:
     define( 'WP_REDIS_PASSWORD', 'very_very_strong_password');      <------------ EDIT THIS
 
 Replace very_very_strong_password with the SAME value you used previously for this key. 
+
 AND Add This at the very Bottom of the file:
 
     /** FTP updates fix. */
@@ -230,14 +239,17 @@ Reload the Changes
     cd ..
     docker-compose up -d
 
+### STEP 8: Activate Plugins & Health Check
+
 In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
 
-Navigate to Redis Settings and "Enable Object Caching"
-Navigate to Nginx Settings and Set the Path to "wordpress/cache"
+* Navigate to Redis Settings and "Enable Object Caching"
+
+* Navigate to Nginx Settings and Set the Path to "wordpress/cache"
 
 Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check to Verify you Have a Healthy Application.
 
-### STEP 8: Portainer Admin UI
+### STEP 9: Portainer Admin UI
 
 Navigate to Your DevPanel URL and Folow the Instructions to Create an Admin User. Keep a Copy of the Credentials. Log into the Admin UI.
 
@@ -245,7 +257,7 @@ Navigate to Your DevPanel URL and Folow the Instructions to Create an Admin User
 
     docker-compose down
 
-### Removal of Containers
+### Removal of Containers & Images
 
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
