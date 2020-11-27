@@ -34,6 +34,7 @@ IX)   Portainer       : Container Management UI
 * Deployment with Docker-Compose
 * WordPress Installation & Configuration
 * Update Wp-Config.Php
+* Cache Folder Ownership
 * Activate Plugins & Health Check
 * Portainer Admin UI
 * Stoppage of Deployment
@@ -155,9 +156,10 @@ This will initiate a prompt that will ask if you wish to save the changes, press
 
 You now have a .env file ready to use for deployment.
 
-### STEP 3: Add Directories
+### STEP 3: Add Directories & Permission
 
     mkdir -p mariadb/ wordpress/cache/ caddy/ logs/nginx/
+    sudo chmod -R 755 wordpress/cache/
 
 
 ### STEP 4: Configure Caddyfile
@@ -235,6 +237,17 @@ AND Add This at the very Bottom of the file:
     define('FS_METHOD','direct');
 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
+
+### STEP 9: Cache Folder Ownership
+
+Navigate to the FastCGI Cache Folder (./wordpress/cache) and check Ownnership of the Folder
+
+    ls -l
+
+Compare this with Ownership of the wp-contents/ Folder and Take Note of the User & Group.
+Change Ownership of the Cache Folder to the same Owner & Group as wp-contents/
+    
+    sudo chown USER:USER cache/
 
 Reload the Changes
 
