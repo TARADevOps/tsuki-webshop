@@ -200,7 +200,9 @@ Admin UI :             https://devpanel.yourdomain.com
 
 ### STEP 6: WordPress Installation & Configuration
 
-Go to your domain and Follow the Steps to install WordPress. Keep a Copy of the Username & Password, this shall be the Admin Credentials for the WordPress Application. Log into the WordPress Admin Panel.
+Go to your domain and Follow the Steps to install WordPress. Keep a Copy of the Username & Password, this shall be the Admin Credentials for the WordPress Application. 
+
+Log into the WordPress Admin Panel.
 
 Go To Plugins on the Left Menu & Delete the 2 default options (Hello Dolly & Akismet). 
 
