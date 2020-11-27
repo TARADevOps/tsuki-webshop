@@ -254,15 +254,13 @@ Reload the Changes
     cd ..
     docker-compose up -d
 
-### STEP 9: Activate Plugins & Health Check
+### STEP 9: Activate Plugins
 
 In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
 
 * Navigate to Redis Settings and "Enable Object Caching"
 
 * Navigate to Nginx Settings and Set the Path to "/var/www/html/cache"
-
-Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check to Verify you Have a Healthy Application.
 
 ### STEP 10: Portainer Admin UI
 
