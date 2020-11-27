@@ -40,8 +40,8 @@ IX)   Portainer       : Container Management UI
 
 ### Architecture
 
-![tsuki-arch-image](https://user-images.githubusercontent.com/75030055/100443925-e20cdf00-30aa-11eb-9af8-fb509e2d16ef.png)
-  
+![tsuki_architecture_image](https://user-images.githubusercontent.com/75030055/100444331-927ae300-30ab-11eb-9f1e-b5dca5c9a998.png)
+
 ### Requirements
 
 * KVM, LXC or Similiar Cloud Hypervisor
