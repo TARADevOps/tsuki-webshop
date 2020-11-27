@@ -155,7 +155,7 @@ This will initiate a prompt that will ask if you wish to save the changes, press
 
 You now have a .env file ready to use for deployment.
 
-### STEP 3: Add Directories with Permissions
+### STEP 3: Add Directories
 
     mkdir -p mariadb/ wordpress/cache/ caddy/ logs/nginx/
 
