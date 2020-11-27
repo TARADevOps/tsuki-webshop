@@ -36,7 +36,7 @@ IX)   Portainer       : Container Management UI
 
 ### Architecture
 
-{ IMAGE COMING SOON }
+![tsuki_arch](https://user-images.githubusercontent.com/75030055/100434420-bedb3300-309c-11eb-9bbd-1a47c7fbcbad.png)
   
 ### Requirements
 
