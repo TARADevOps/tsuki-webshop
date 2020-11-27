@@ -238,7 +238,7 @@ AND Add This at the very Bottom of the file:
 
 Exit the file by pressing and holding ctrl + x. This will initiate a prompt that will ask if you wish to save the changes, press Y and Enter. 
 
-### STEP 9: Cache Folder Ownership
+### STEP 8: Cache Folder Ownership
 
 Navigate to the FastCGI Cache Folder (./wordpress/cache) and check Ownnership of the Folder
 
@@ -254,7 +254,7 @@ Reload the Changes
     cd ..
     docker-compose up -d
 
-### STEP 8: Activate Plugins & Health Check
+### STEP 9: Activate Plugins & Health Check
 
 In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
 
@@ -264,7 +264,7 @@ In The WordPress Admin UI, Navigate To Plugins and Activate Redis & Nginx Cache.
 
 Navigate to the Dashboard on the Left Menu Bar and Perform a Health Check to Verify you Have a Healthy Application.
 
-### STEP 9: Portainer Admin UI
+### STEP 10: Portainer Admin UI
 
 Navigate to Your DevPanel URL and Folow the Instructions to Create an Admin User. Keep a Copy of the Credentials. Log into the Admin UI.
 
