@@ -247,7 +247,7 @@ Navigate to the FastCGI Cache Folder (./wordpress/cache) and check Ownnership of
 Compare this with Ownership of the wp-contents/ Folder and Take Note of the User.
 Change Ownership of the Cache Folder to the same Owner as wp-contents/
     
-    sudo chown USER cache/
+    sudo chown -R USER cache/
 
 Reload the Changes
 
