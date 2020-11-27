@@ -5,7 +5,7 @@
 
 Desired Outcome of this Document is a Deployment of a Stack of Docker Containers providing a Production Backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Lossless Compression. 
 
-The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Application Firewall. 
+The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Provides A Web Application Firewall. 
 
 Automation & Orchestration by Docker-Compose. Developer / Admin UI by Portainer.
 
