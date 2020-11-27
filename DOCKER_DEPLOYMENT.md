@@ -3,7 +3,7 @@
 
 ## Overview:
 
-Desired Outcome of this Document is a Deployment of a Stack of Docker Containers providing a Production Backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Brotli Compression. 
+Desired Outcome of this Document is a Deployment of a Stack of Docker Containers providing a Production Backend that serves a WordPress Application via the FASTCGI Application Server to the Web Server with built in FastCGI Cache & Lossless Compression. 
 
 The Reverse Proxy handles Secure Domain Name Validation, Auto TLS Management & Application Firewall. 
 
@@ -41,11 +41,7 @@ IX)   Portainer       : Container Management UI
 ### Architecture
 
 ![tsuki_arch](https://user-images.githubusercontent.com/75030055/100434420-bedb3300-309c-11eb-9bbd-1a47c7fbcbad.png)
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 3bd33229f7d8470515a42b08eae2d14555256883
 ### Requirements
 
 * KVM, LXC or Similiar Cloud Hypervisor
