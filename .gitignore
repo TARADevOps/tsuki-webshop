@@ -1,4 +1,4 @@
 # Secret variables (passwords etc):
-.env*
+# .env*
 !.env_example
 
