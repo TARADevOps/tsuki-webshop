@@ -1,4 +1,6 @@
 # Secret variables (passwords etc):
 # .env*
+logs/
+mariadb/
+wordpress/
 !.env_example
-
